@@ -13,7 +13,7 @@ supabase.createClient(
 );
 
 console.log(
-    "Connected"
+    "✅ Supabase Connected"
 );
 
 
@@ -864,3 +864,293 @@ bannerImages.forEach(img=>{
     }
 
 });
+
+
+
+
+const heroImages =
+document.querySelectorAll(
+"#heroCarousel img"
+);
+
+const heroLoading =
+document.getElementById(
+"heroLoading"
+);
+
+let heroLoaded = 0;
+
+const heroObserver =
+new IntersectionObserver(entries=>{
+
+    if(entries[0].isIntersecting){
+
+        heroImages.forEach(img=>{
+
+            if(img.complete){
+
+                heroLoaded++;
+
+            }else{
+
+                img.addEventListener(
+                "load",()=>{
+
+                    heroLoaded++;
+
+                    if(
+                        heroLoaded ===
+                        heroImages.length
+                    ){
+
+                        heroLoading
+                        .style.display =
+                        "none";
+
+                    }
+
+                });
+
+            }
+
+        });
+
+        if(
+            heroLoaded ===
+            heroImages.length
+        ){
+
+            heroLoading
+            .style.display =
+            "none";
+
+        }
+
+        heroObserver.disconnect();
+
+    }
+
+},{
+    rootMargin:"200px"
+});
+
+heroObserver.observe(
+document.getElementById(
+"heroCarousel"
+));
+
+const showcaseImages =
+document.querySelectorAll(
+"#showcaseWrap img"
+);
+
+const showcaseLoading =
+document.getElementById(
+"showcaseLoading"
+);
+
+let showcaseLoaded = 0;
+
+const showcaseObserver =
+new IntersectionObserver(entries=>{
+
+    if(entries[0].isIntersecting){
+
+        showcaseImages.forEach(img=>{
+
+            if(img.complete){
+
+                showcaseLoaded++;
+
+            }else{
+
+                img.addEventListener(
+                "load",()=>{
+
+                    showcaseLoaded++;
+
+                    if(
+                        showcaseLoaded ===
+                        showcaseImages.length
+                    ){
+
+                        showcaseLoading
+                        .style.display =
+                        "none";
+
+                    }
+
+                });
+
+            }
+
+        });
+
+        if(
+            showcaseLoaded ===
+            showcaseImages.length
+        ){
+
+            showcaseLoading
+            .style.display =
+            "none";
+
+        }
+
+        showcaseObserver.disconnect();
+
+    }
+
+},{
+    rootMargin:"200px"
+});
+
+showcaseObserver.observe(
+document.getElementById(
+"showcaseWrap"
+));
+
+
+const orbitImages =
+document.querySelectorAll(
+"#orbitBox img"
+);
+
+const orbitLoading =
+document.getElementById(
+"orbitLoading"
+);
+
+let orbitLoaded = 0;
+
+const orbitObserver =
+new IntersectionObserver(entries=>{
+
+    if(entries[0].isIntersecting){
+
+        orbitImages.forEach(img=>{
+
+            if(img.complete){
+
+                orbitLoaded++;
+
+            }else{
+
+                img.addEventListener(
+                "load",()=>{
+
+                    orbitLoaded++;
+
+                    if(
+                        orbitLoaded ===
+                        orbitImages.length
+                    ){
+
+                        orbitLoading
+                        .style.display =
+                        "none";
+
+                    }
+
+                });
+
+            }
+
+        });
+
+        if(
+            orbitLoaded ===
+            orbitImages.length
+        ){
+
+            orbitLoading
+            .style.display =
+            "none";
+
+        }
+
+        orbitObserver.disconnect();
+
+    }
+
+},{
+    rootMargin:"200px"
+});
+
+orbitObserver.observe(
+document.getElementById(
+"orbitBox"
+));
+
+
+
+const flipImages =
+document.querySelectorAll(
+"#flipGallery img"
+);
+
+const flipLoading =
+document.getElementById(
+"flipLoading"
+);
+
+let flipLoaded = 0;
+
+const flipObserver =
+new IntersectionObserver(entries=>{
+
+    if(entries[0].isIntersecting){
+
+        flipImages.forEach(img=>{
+
+            if(img.complete){
+
+                flipLoaded++;
+
+            }else{
+
+                img.addEventListener(
+                "load",()=>{
+
+                    flipLoaded++;
+
+                    if(
+                        flipLoaded ===
+                        flipImages.length
+                    ){
+
+                        flipLoading
+                        .style.display =
+                        "none";
+
+                    }
+
+                });
+
+            }
+
+        });
+
+        if(
+            flipLoaded ===
+            flipImages.length
+        ){
+
+            flipLoading
+            .style.display =
+            "none";
+
+        }
+
+        flipObserver.disconnect();
+
+    }
+
+},{
+    rootMargin:"200px"
+});
+
+flipObserver.observe(
+document.getElementById(
+"flipGallery"
+));
