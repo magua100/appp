@@ -13,7 +13,7 @@ supabase.createClient(
 );
 
 console.log(
-    "✅ Supabase Connected"
+    "Connected"
 );
 
 
@@ -67,12 +67,7 @@ slider.addEventListener("wheel",function(){
   showSlide(currentSlide);
 
 });
-setTimeout(()=>{
 
-  document.body.style.overflowX = "hidden";
-  document.body.style.overflowY = "auto";
-
-},2200);
 
 function showCategory(category, element){
 
@@ -838,19 +833,15 @@ bannerImages.forEach(img=>{
 
         loadedCount++;
 
-        if(
-            loadedCount ===
-            bannerImages.length
-        ){
+       if(
+    loadedCount ===
+    bannerImages.length
+){
 
-            setTimeout(()=>{
+    bannerShimmer.style.display =
+    "none";
 
-                bannerShimmer.style.display =
-                "none";
-
-            },1000);
-
-        }
+}
 
     }
 
