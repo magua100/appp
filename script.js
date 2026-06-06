@@ -820,10 +820,9 @@ setTimeout(()=>{
 },1500);
 
 });
-
 const bannerImages =
 document.querySelectorAll(
-".banner-img"
+"#bannerSlider .banner-img"
 );
 
 const bannerShimmer =
@@ -844,9 +843,12 @@ bannerImages.forEach(img=>{
             bannerImages.length
         ){
 
-            bannerShimmer
-            .style.display =
-            "none";
+            setTimeout(()=>{
+
+                bannerShimmer.style.display =
+                "none";
+
+            },1000);
 
         }
 
