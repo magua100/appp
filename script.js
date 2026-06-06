@@ -820,3 +820,54 @@ setTimeout(()=>{
 },1500);
 
 });
+
+const bannerImages =
+document.querySelectorAll(
+".banner-img"
+);
+
+const bannerShimmer =
+document.getElementById(
+"bannerShimmer"
+);
+
+let loadedCount = 0;
+
+bannerImages.forEach(img=>{
+
+    function imageLoaded(){
+
+        loadedCount++;
+
+        if(
+            loadedCount ===
+            bannerImages.length
+        ){
+
+            bannerShimmer
+            .style.display =
+            "none";
+
+        }
+
+    }
+
+    if(img.complete){
+
+        imageLoaded();
+
+    }else{
+
+        img.addEventListener(
+            "load",
+            imageLoaded
+        );
+
+        img.addEventListener(
+            "error",
+            imageLoaded
+        );
+
+    }
+
+});
