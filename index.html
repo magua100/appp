@@ -1376,20 +1376,22 @@ linear-gradient(
 
     inset:0;
 
-    z-index:999;
+    z-index:9999;
+
+    border-radius:24px;
 
     background:
     linear-gradient(
         90deg,
-        rgba(255,255,255,.08) 0%,
-        rgba(255,255,255,.25) 50%,
-        rgba(255,255,255,.08) 100%
+        #d5d5d5 25%,
+        #ffffff 50%,
+        #d5d5d5 75%
     );
 
     background-size:200% 100%;
 
     animation:
-    bannerShimmerMove 1.2s linear infinite;
+    bannerShimmerMove 1s linear infinite;
 }
 
 @keyframes bannerShimmerMove{
