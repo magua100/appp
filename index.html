@@ -1404,6 +1404,146 @@ linear-gradient(
         background-position:200% 0;
     }
 }
+.hero-loading{
+
+    position:absolute;
+
+    inset:0;
+
+    z-index:50;
+
+    background:
+    linear-gradient(
+        90deg,
+        #e5e5e5 25%,
+        #ffffff 50%,
+        #e5e5e5 75%
+    );
+
+    background-size:200% 100%;
+
+    animation:
+    heroShimmer 1s linear infinite;
+}
+
+@keyframes heroShimmer{
+
+    0%{
+        background-position:-200% 0;
+    }
+
+    100%{
+        background-position:200% 0;
+    }
+
+}
+.showcase-loading{
+
+    position:absolute;
+
+    inset:0;
+
+    z-index:50;
+
+    background:
+    linear-gradient(
+        90deg,
+        #e5e5e5 25%,
+        #ffffff 50%,
+        #e5e5e5 75%
+    );
+
+    background-size:200% 100%;
+
+    animation:
+    showcaseShimmer 1s linear infinite;
+}
+
+@keyframes showcaseShimmer{
+
+    0%{
+        background-position:-200% 0;
+    }
+
+    100%{
+        background-position:200% 0;
+    }
+
+}
+.orbit-box{
+    position:relative;
+}
+
+.orbit-loading{
+
+    position:absolute;
+
+    inset:0;
+
+    z-index:50;
+
+    background:
+    linear-gradient(
+        90deg,
+        #e5e5e5 25%,
+        #ffffff 50%,
+        #e5e5e5 75%
+    );
+
+    background-size:200% 100%;
+
+    animation:
+    orbitShimmer 1s linear infinite;
+}
+
+@keyframes orbitShimmer{
+
+    0%{
+        background-position:-200% 0;
+    }
+
+    100%{
+        background-position:200% 0;
+    }
+
+}
+.flip-gallery{
+    position:relative;
+}
+
+.flip-loading{
+
+    position:absolute;
+
+    inset:0;
+
+    z-index:50;
+
+    background:
+    linear-gradient(
+        90deg,
+        #e5e5e5 25%,
+        #ffffff 50%,
+        #e5e5e5 75%
+    );
+
+    background-size:200% 100%;
+
+    animation:
+    flipShimmer 1s linear infinite;
+}
+
+@keyframes flipShimmer{
+
+    0%{
+        background-position:-200% 0;
+    }
+
+    100%{
+        background-position:200% 0;
+    }
+
+}
 </style>
 </head>
 <body>
@@ -1545,6 +1685,11 @@ id="profileBtn">
 
 <div class="hero-carousel" id="heroCarousel">
 
+    <div
+    class="hero-loading"
+    id="heroLoading">
+    </div>
+
     <div class="hero-panel current">
         <img src="jewlery/1.jpg" alt="" loading="lazy">
     </div>
@@ -1572,8 +1717,12 @@ id="profileBtn">
 
 <div id="materialsContent" class="category-content">
  
-
 <div class="showcase-wrap" id="showcaseWrap">
+
+    <div
+    class="showcase-loading"
+    id="showcaseLoading">
+    </div>
 
     <div class="showcase-item selected">
         <img src="drss/1.jpg" alt="" loading="lazy">
@@ -1607,6 +1756,11 @@ id="profileBtn">
 <div id="dressesContent" class="category-content">
 
 <div class="flip-gallery" id="flipGallery">
+
+    <div
+    class="flip-loading"
+    id="flipLoading">
+    </div>
 
     <div class="flip-card open">
         <img src="dresses/1.webp" alt="" loading="lazy">
@@ -1642,6 +1796,11 @@ id="profileBtn">
 
 
 <div class="orbit-box" id="orbitBox">
+
+    <div
+    class="orbit-loading"
+    id="orbitLoading">
+    </div>
 
     <div class="orbit-frame live">
         <img src="lehangas/1.webp" alt="">
