@@ -1,0 +1,328 @@
+let slides = document.querySelectorAll(".banner-slide");
+let dots = document.querySelectorAll(".dot");
+
+let currentSlide = 0;
+
+/* SHOW SLIDE */
+
+function showSlide(index){
+
+  slides.forEach(slide=>{
+    slide.classList.remove("active");
+  });
+
+  dots.forEach(dot=>{
+    dot.classList.remove("active");
+  });
+
+  slides[index].classList.add("active");
+  dots[index].classList.add("active");
+}
+
+/* AUTO CHANGE */
+
+setInterval(()=>{
+
+  currentSlide++;
+
+  if(currentSlide >= slides.length){
+    currentSlide = 0;
+  }
+
+  showSlide(currentSlide);
+
+},3000);
+
+/* SCROLL CHANGE */
+
+let slider = document.getElementById("bannerSlider");
+
+slider.addEventListener("wheel",function(){
+
+  currentSlide++;
+
+  if(currentSlide >= slides.length){
+    currentSlide = 0;
+  }
+
+  showSlide(currentSlide);
+
+});
+setTimeout(()=>{
+
+  document.body.style.overflowX = "hidden";
+  document.body.style.overflowY = "auto";
+
+},2200);
+
+function showCategory(category, element){
+
+    document
+    .querySelectorAll(".category-content")
+    .forEach(section=>{
+
+        section.style.display = "none";
+
+    });
+
+    document
+    .querySelectorAll(".category-item")
+    .forEach(item=>{
+
+        item.classList.remove("active");
+
+    });
+
+    document.getElementById(
+        category + "Content"
+    ).style.display = "block";
+
+    element.classList.add("active");
+
+}
+
+window.addEventListener("load",()=>{
+
+    showCategory(
+        "sarees",
+        document.querySelector(".category-item")
+    );
+
+});
+
+const panels = document.querySelectorAll(".hero-panel");
+const markers = document.querySelectorAll(".hero-marker");
+const heroCarousel = document.getElementById("heroCarousel");
+
+let activePanel = 0;
+
+function displayPanel(index){
+
+    panels.forEach(panel=>{
+        panel.classList.remove("current");
+    });
+
+    markers.forEach(marker=>{
+        marker.classList.remove("current");
+    });
+
+    panels[index].classList.add("current");
+    markers[index].classList.add("current");
+}
+
+function nextPanel(){
+
+    activePanel++;
+
+    if(activePanel >= panels.length){
+        activePanel = 0;
+    }
+
+    displayPanel(activePanel);
+}
+
+let autoPlay = setInterval(nextPanel,3000);
+
+markers.forEach((marker,index)=>{
+
+    marker.addEventListener("click",()=>{
+
+        activePanel = index;
+
+        displayPanel(activePanel);
+
+        clearInterval(autoPlay);
+        autoPlay = setInterval(nextPanel,3000);
+
+    });
+
+});
+
+heroCarousel.addEventListener("wheel",(e)=>{
+
+    if(e.deltaY > 0){
+        activePanel++;
+    }else{
+        activePanel--;
+    }
+
+    if(activePanel >= panels.length){
+        activePanel = 0;
+    }
+
+    if(activePanel < 0){
+        activePanel = panels.length - 1;
+    }
+
+    displayPanel(activePanel);
+
+});
+
+let touchStart = 0;
+
+heroCarousel.addEventListener("touchstart",(e)=>{
+    touchStart = e.touches[0].clientX;
+});
+
+heroCarousel.addEventListener("touchend",(e)=>{
+
+    let touchEnd = e.changedTouches[0].clientX;
+
+    if(touchStart - touchEnd > 50){
+        activePanel = (activePanel + 1) % panels.length;
+    }
+    else if(touchEnd - touchStart > 50){
+        activePanel = (activePanel - 1 + panels.length) % panels.length;
+    }
+
+    displayPanel(activePanel);
+
+});
+
+
+const cards = document.querySelectorAll(".showcase-item");
+const points = document.querySelectorAll(".showcase-point");
+
+let activeCard = 0;
+
+function activateCard(index){
+
+    cards.forEach(card=>{
+        card.classList.remove("selected");
+    });
+
+    points.forEach(point=>{
+        point.classList.remove("selected");
+    });
+
+    cards[index].classList.add("selected");
+    points[index].classList.add("selected");
+}
+
+setInterval(()=>{
+
+    activeCard++;
+
+    if(activeCard >= cards.length){
+        activeCard = 0;
+    }
+
+    activateCard(activeCard);
+
+},3000);
+
+points.forEach((point,index)=>{
+
+    point.addEventListener("click",()=>{
+
+        activeCard = index;
+        activateCard(activeCard);
+
+    });
+
+});
+window.addEventListener("DOMContentLoaded", () => {
+
+    const panels = document.querySelectorAll(".flip-card");
+    const marks = document.querySelectorAll(".flip-mark");
+
+    let pointer = 0;
+
+    function switchPanel(index){
+
+        panels.forEach(panel => {
+            panel.classList.remove("open");
+        });
+
+        marks.forEach(mark => {
+            mark.classList.remove("open");
+        });
+
+        panels[index].classList.add("open");
+        marks[index].classList.add("open");
+    }
+
+    let sliderTimer = setInterval(() => {
+
+        pointer++;
+
+        if(pointer >= panels.length){
+            pointer = 0;
+        }
+
+        switchPanel(pointer);
+
+    }, 3000);
+
+    marks.forEach((mark, index) => {
+
+        mark.addEventListener("click", () => {
+
+            pointer = index;
+
+            switchPanel(pointer);
+
+            clearInterval(sliderTimer);
+
+            sliderTimer = setInterval(() => {
+
+                pointer++;
+
+                if(pointer >= panels.length){
+                    pointer = 0;
+                }
+
+                switchPanel(pointer);
+
+            }, 3000);
+
+        });
+
+    });
+
+});
+
+
+
+
+const orbitFrames = document.querySelectorAll(".orbit-frame");
+const orbitPins = document.querySelectorAll(".orbit-pin");
+
+let orbitIndex = 0;
+
+function runOrbit(index){
+
+    orbitFrames.forEach(frame=>{
+        frame.classList.remove("live");
+    });
+
+    orbitPins.forEach(pin=>{
+        pin.classList.remove("live");
+    });
+
+    orbitFrames[index].classList.add("live");
+    orbitPins[index].classList.add("live");
+}
+
+setInterval(()=>{
+
+    orbitIndex++;
+
+    if(orbitIndex >= orbitFrames.length){
+        orbitIndex = 0;
+    }
+
+    runOrbit(orbitIndex);
+
+},3000);
+
+orbitPins.forEach((pin,index)=>{
+
+    pin.addEventListener("click",()=>{
+
+        orbitIndex = index;
+        runOrbit(orbitIndex);
+
+    });
+
+});

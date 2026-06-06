@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:#5e3984;
+    min-height:100vh;
+    font-family:Arial,sans-serif;
+}
+
+/* TOP SPACE */
+
+.top-space{
+    height:55px;
+}
+
+/* NAVBAR */
+
+.navbar{
+
+    margin:0 12px;
+
+    height:62px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:0 18px;
+
+   
+    backdrop-filter:blur(18px);
+
+    
+    border-radius:20px;
+}
+
+.nav-logo{
+
+    width:42px;
+    height:42px;
+
+    object-fit:contain;
+}
+
+.nav-profile{
+
+    font-size:28px;
+
+    color:white;
+}
+
+/* SEARCH SECTION */
+
+.search-wrapper{
+
+    margin:6px 12px 0;
+}
+
+.search-box{
+
+    height:58px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    padding:0 18px;
+
+    background:rgba(255,255,255,.10);
+
+    backdrop-filter:blur(18px);
+
+    border:1px solid rgba(255,255,255,.15);
+
+    border-radius:20px;
+
+    box-shadow:
+    0 10px 25px rgba(0,0,0,.15);
+}
+
+.search-icon{
+
+    color:white;
+
+    font-size:17px;
+
+    opacity:.9;
+}
+
+.search-input{
+
+    flex:1;
+
+    background:none;
+
+    border:none;
+
+    outline:none;
+
+    color:white;
+
+    font-size:15px;
+}
+
+.search-input::placeholder{
+
+    color:rgba(255,255,255,.65);
+}
+
+.filter-btn{
+
+    width:36px;
+    height:36px;
+
+    display:flex;
+
+    justify-content:center;
+    align-items:center;
+
+    border-radius:12px;
+
+    background:rgba(255,255,255,.12);
+
+    color:white;
+
+    font-size:15px;
+}
+.category-scroll{
+
+    display:flex;
+
+    gap:16px;
+
+    overflow-x:auto;
+
+    overflow-y:hidden;
+
+    padding:10px 12px;
+
+    scrollbar-width:none;
+
+    -ms-overflow-style:none;
+}
+
+.category-scroll::-webkit-scrollbar{
+
+    display:none;
+}
+
+.category-item{
+
+    min-width:65px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    gap:5px;
+
+    flex-shrink:0;
+
+    cursor:pointer;
+
+    transition:.3s ease;
+}
+
+.category-item.active{
+
+    transform:scale(1.12);
+}
+
+.category-item.active img{
+
+    transform:scale(1.08);
+
+    filter:drop-shadow(
+        0 0 12px rgba(255,255,255,.5)
+    );
+}
+
+.category-item img{
+
+    transition:.3s ease;
+}
+.category-item img{
+
+    width:50px;
+
+    height:50px;
+
+    object-fit:cover;
+
+    display:block;
+
+    border-radius:12px; /* or remove completely */
+}
+
+.category-item span{
+
+    color:white;
+
+    font-size:10px;
+
+    text-align:center;
+
+    white-space:nowrap;
+}
+
+@media(max-width:768px){
+
+    .category-item img{
+
+        width:38px;
+
+        height:38px;
+    }
+
+    .category-item span{
+
+        font-size:9px;
+    }
+
+}
+.category-content{
+    display:none;
+}
+.bottom-nav{
+
+    position:fixed;
+
+    bottom:12px;
+
+    left:12px;
+
+    right:12px;
+
+    height:72px;
+
+    display:flex;
+
+    justify-content:space-around;
+
+    align-items:center;
+
+    background:rgba(255,255,255,.08);
+
+    backdrop-filter:blur(15px);
+    -webkit-backdrop-filter:blur(15px);
+
+    border:1px solid rgba(255,255,255,.12);
+
+    border-radius:20px;
+
+    z-index:9999;
+}
+
+.bottom-item{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:4px;
+
+    min-width:60px;
+}
+
+.bottom-item img{
+
+    width:24px;
+
+    height:24px;
+
+    object-fit:contain;
+
+    display:block;
+}
+
+.bottom-item span{
+
+    color:white;
+
+    font-size:9px;
+
+    text-align:center;
+
+    white-space:nowrap;
+}
+
+@media(max-width:768px){
+
+    .bottom-nav{
+
+        height:68px;
+
+        bottom:10px;
+
+        left:10px;
+
+        right:10px;
+    }
+
+    .bottom-item img{
+
+        width:22px;
+
+        height:22px;
+    }
+
+    .bottom-item span{
+
+        font-size:8px;
+    }
+
+}
+
+.magua-icon{
+
+    width:30px !important;
+
+    height:30px !important;
+
+    object-fit:contain;
+}
+
+.banner-slider{
+  width:calc(100% - 32px);
+
+  height:150px;
+
+  position:relative;
+
+  margin:8px auto 0; /* pushed upward */
+
+  overflow:hidden;
+
+  border-radius:24px;
+}
+
+/* SLIDE */
+
+.banner-slide{
+  position:absolute;
+  inset:0;
+
+  opacity:0;
+
+  transition:.6s ease;
+}
+
+/* ACTIVE */
+
+.banner-slide.active{
+  opacity:1;
+}
+
+/* IMAGE */
+
+.banner-slide img{
+  width:100%;
+  height:100%;
+
+  object-fit:cover;
+
+  display:block;
+}
+
+/* ================= DOTS ================= */
+
+.slider-dots{
+  width:100%;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  gap:8px;
+
+  margin-top:12px;
+}
+
+/* DOT */
+
+.dot{
+  width:8px;
+  height:8px;
+
+  border-radius:50%;
+
+  background:rgba(255,255,255,.35);
+
+  transition:.3s;
+}
+
+/* ACTIVE DOT */
+
+.dot.active{
+  width:22px;
+
+  border-radius:20px;
+
+  background:#fff;
+}
+
+.hero-carousel{
+    width:calc(100% - 32px);
+    height:150px;
+    margin:8px auto 0;
+    position:relative;
+    overflow:hidden;
+    border-radius:24px;
+}
+
+.hero-panel{
+    position:absolute;
+    inset:0;
+    opacity:0;
+    transition:opacity .6s ease;
+}
+
+.hero-panel.current{
+    opacity:1;
+}
+
+.hero-panel img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+    user-select:none;
+    -webkit-user-drag:none;
+}
+
+.hero-indicators{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:8px;
+    margin-top:12px;
+}
+
+.hero-marker{
+    width:8px;
+    height:8px;
+    border-radius:50%;
+    background:rgba(255,255,255,.35);
+    transition:.3s;
+}
+
+.hero-marker.current{
+    width:22px;
+    border-radius:20px;
+    background:#fff;
+}
+.showcase-wrap{
+    width:calc(100% - 32px);
+    height:150px;
+    margin:8px auto 0;
+    position:relative;
+    overflow:hidden;
+    border-radius:24px;
+}
+
+.showcase-item{
+    position:absolute;
+    inset:0;
+    opacity:0;
+    transition:opacity .6s ease;
+}
+
+.showcase-item.selected{
+    opacity:1;
+}
+
+.showcase-item img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+}
+
+.showcase-points{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:8px;
+    margin-top:12px;
+}
+
+.showcase-point{
+    width:8px;
+    height:8px;
+    border-radius:50%;
+    background:rgba(255,255,255,.35);
+    transition:.3s;
+}
+
+.showcase-point.selected{
+    width:22px;
+    border-radius:20px;
+    background:#fff;
+}
+.flip-gallery{
+    width:calc(100% - 32px);
+    height:150px;
+    margin:8px auto 0;
+    position:relative;
+    overflow:hidden;
+    border-radius:24px;
+}
+
+.flip-card{
+    position:absolute;
+    inset:0;
+    opacity:0;
+    transition:opacity .6s ease;
+}
+
+.flip-card.open{
+    opacity:1;
+}
+
+.flip-card img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+}
+
+.flip-tracker{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:8px;
+    margin-top:12px;
+}
+
+.flip-mark{
+    width:8px;
+    height:8px;
+    border-radius:50%;
+    background:rgba(255,255,255,.35);
+    transition:.3s;
+}
+
+.flip-mark.open{
+    width:22px;
+    border-radius:20px;
+    background:#fff;
+}
+.orbit-box{
+    width:calc(100% - 32px);
+    height:150px;
+    margin:8px auto 0;
+    position:relative;
+    overflow:hidden;
+    border-radius:24px;
+}
+
+.orbit-frame{
+    position:absolute;
+    inset:0;
+    opacity:0;
+    transition:opacity .6s ease;
+}
+
+.orbit-frame.live{
+    opacity:1;
+}
+
+.orbit-frame img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+}
+
+.orbit-nav{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:8px;
+    margin-top:12px;
+}
+
+.orbit-pin{
+    width:8px;
+    height:8px;
+    border-radius:50%;
+    background:rgba(255,255,255,.35);
+    transition:.3s;
+}
+
+.orbit-pin.live{
+    width:22px;
+    border-radius:20px;
+    background:#fff;
+}
+</style>
+</head>
+<body>
+
+<div class="top-space"></div>
+
+<div class="navbar">
+
+    <img
+    src="logos/magualogo.webp"
+    class="nav-logo">
+
+    <i class="fas fa-user-circle nav-profile"></i>
+
+</div>
+
+<div class="search-wrapper">
+
+    <div class="search-box">
+
+        <i class="fas fa-search search-icon"></i>
+
+        <input
+        class="search-input"
+        type="text"
+        placeholder="Search for Jewellery">
+
+        <div class="filter-btn">
+
+            <i class="fas fa-sliders-h"></i>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="category-scroll">
+
+    <div
+        class="category-item active"
+        onclick="showCategory('sarees', this)"
+    >
+        <img src="sares.webp">
+        <span>Sarees</span>
+    </div>
+
+    <div
+        class="category-item"
+        onclick="showCategory('jewellery', this)"
+    >
+        <img src="jewelry.png">
+        <span>Jewellery</span>
+    </div>
+
+    <div
+        class="category-item"
+        onclick="showCategory('materials', this)"
+    >
+        <img src="wedding.png">
+        <span>Materials</span>
+    </div>
+
+    <div
+        class="category-item"
+        onclick="showCategory('dresses', this)"
+    >
+        <img src="wedding-dress.png">
+        <span>Dresses</span>
+    </div>
+
+    <div
+        class="category-item"
+        onclick="showCategory('lehengas', this)"
+    >
+        <img src="lehangas.png">
+        <span>Lehengas</span>
+    </div>
+
+    <div
+        class="category-item"
+        onclick="showCategory('makeup', this)"
+    >
+        <img src="makeup.png">
+        <span>Makeup</span>
+    </div>
+
+</div>
+
+<div id="sareesContent" class="category-content">
+
+<div class="banner-slider" id="bannerSlider">
+
+  <!-- SLIDE 1 -->
+
+  <div class="banner-slide active">
+    <img src="sarres/banner1.jpg" alt="" loading="lazy">
+  </div>
+
+  <!-- SLIDE 2 -->
+
+  <div class="banner-slide">
+    <img src="sarres/banner2.webp" alt="" loading="lazy">
+  </div>
+
+  <!-- SLIDE 3 -->
+
+  <div class="banner-slide">
+    <img src="sarres/banner3.webp" alt="" loading="lazy">
+  </div>
+
+</div>
+
+<!-- DOTS -->
+
+<div class="slider-dots">
+
+  <span class="dot active"></span>
+  <span class="dot"></span>
+  <span class="dot"></span>
+
+</div>
+
+
+
+<!-- saress last div-->
+</div>
+
+
+<!-- jewlwey start here -->
+
+
+<div id="jewelleryContent" class="category-content">
+
+<div class="hero-carousel" id="heroCarousel">
+
+    <div class="hero-panel current">
+        <img src="jewlery/1.jpg" alt="" loading="lazy">
+    </div>
+
+    <div class="hero-panel">
+        <img src="jewlery/2.jpg" alt="" loading="lazy">
+    </div>
+
+    <div class="hero-panel">
+        <img src="jewlery/3.jpg" alt="" loading="lazy">
+    </div>
+
+</div>
+
+<div class="hero-indicators">
+
+    <span class="hero-marker current"></span>
+    <span class="hero-marker"></span>
+    <span class="hero-marker"></span>
+
+</div>
+
+
+</div>
+
+<div id="materialsContent" class="category-content">
+ 
+
+<div class="showcase-wrap" id="showcaseWrap">
+
+    <div class="showcase-item selected">
+        <img src="drss/1.jpg" alt="" loading="lazy">
+    </div>
+
+    <div class="showcase-item">
+        <img src="drss/2.jpg" alt="" loading="lazy">
+    </div>
+
+    <div class="showcase-item">
+        <img src="drss/3.jpg" alt="" loading="lazy">
+    </div>
+
+</div>
+
+<div class="showcase-points">
+
+    <span class="showcase-point selected"></span>
+    <span class="showcase-point"></span>
+    <span class="showcase-point"></span>
+
+</div>
+
+
+</div>
+
+
+
+
+
+<div id="dressesContent" class="category-content">
+
+<div class="flip-gallery" id="flipGallery">
+
+    <div class="flip-card open">
+        <img src="dresses/1.webp" alt="" loading="lazy">
+    </div>
+
+    <div class="flip-card">
+        <img src="dresses/2.webp" alt="" loading="lazy">
+    </div>
+
+    <div class="flip-card">
+        <img src="dresses/3.webp" alt="" loading="lazy">
+    </div>
+
+</div>
+
+<div class="flip-tracker">
+
+    <span class="flip-mark open"></span>
+    <span class="flip-mark"></span>
+    <span class="flip-mark"></span>
+
+</div>
+
+
+</div>
+
+
+
+
+
+<div id="lehengasContent" class="category-content">
+
+
+
+<div class="orbit-box" id="orbitBox">
+
+    <div class="orbit-frame live">
+        <img src="lehangas/1.webp" alt="">
+    </div>
+
+    <div class="orbit-frame">
+        <img src="lehangas/2.jpg" alt="">
+    </div>
+
+    <div class="orbit-frame">
+        <img src="lehangas/3.jpg" alt="">
+    </div>
+
+</div>
+
+<div class="orbit-nav">
+
+    <span class="orbit-pin live"></span>
+    <span class="orbit-pin"></span>
+    <span class="orbit-pin"></span>
+
+</div>
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--bottom dev-->
+
+<div class="bottom-nav">
+
+   <div class="bottom-item">
+
+    <img
+        src="logos/magualogo.webp"
+        class="magua-icon"
+    >
+
+    <span>Magua</span>
+
+</div>
+
+    <div class="bottom-item">
+
+        <img src="icons/cat.png">
+
+        <span>Categories</span>
+
+    </div>
+
+    <div class="bottom-item">
+
+        <img src="icons/helop.png">
+
+        <span>Help</span>
+
+    </div>
+
+    <div class="bottom-item">
+
+        <img src="icons/myorder.png">
+
+        <span>My Orders</span>
+
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
