@@ -1,3 +1,22 @@
+
+
+const supabaseUrl =
+"https://ummzqbaalrxyyulrkxaz.supabase.co";
+
+const supabaseKey =
+"sb_publishable_o79JQ-LkQkFohS4m7waJVw_U_xiIX8r";
+
+window.supabaseClient =
+supabase.createClient(
+    supabaseUrl,
+    supabaseKey
+);
+
+console.log(
+    "✅ Supabase Connected"
+);
+
+
 let slides = document.querySelectorAll(".banner-slide");
 let dots = document.querySelectorAll(".dot");
 
@@ -324,5 +343,472 @@ orbitPins.forEach((pin,index)=>{
         runOrbit(orbitIndex);
 
     });
+
+});
+
+const bannerText =
+document.getElementById(
+    "bannerChangingText"
+);
+
+const bannerWords = [
+
+    {
+        text:"MAKEUP",
+        font:"cursive",
+        anim:"fromLeft",
+        color:"#ff69b4"
+    },
+
+    {
+        text:"FASHION",
+        font:"Georgia",
+        anim:"fromRight",
+        color:"#ffd700"
+    },
+
+    {
+        text:"BEAUTY",
+        font:"Verdana",
+        anim:"fromTop",
+        color:"#00ffff"
+    },
+
+    {
+        text:"JEWELLERY",
+        font:"Times New Roman",
+        anim:"fromBottom",
+        color:"#adff2f"
+    },
+
+    {
+        text:"LEHENGAS",
+        font:"Impact",
+        anim:"fromZoom",
+        color:"#ff8c00"
+    }
+
+];
+
+let wordPos = 0;
+
+setInterval(()=>{
+
+    wordPos =
+    (wordPos + 1) %
+    bannerWords.length;
+
+    bannerText.className =
+    "banner-top-text";
+
+    bannerText.textContent =
+    bannerWords[wordPos].text;
+
+    bannerText.style.fontFamily =
+    bannerWords[wordPos].font;
+bannerText.style.color =
+bannerWords[wordPos].color;
+    bannerText.classList.add(
+        bannerWords[wordPos].anim
+    );
+
+    /* Sparkle Blast */
+
+    for(let i=0;i<18;i++){
+
+        const spark =
+        document.createElement("span");
+
+        spark.innerHTML =
+        ["✨","⭐","💫","✦","✧"]
+        [Math.floor(Math.random()*5)];
+
+        spark.style.position =
+        "absolute";
+
+        spark.style.left =
+        (40 + Math.random()*20) + "%";
+
+        spark.style.top =
+        (40 + Math.random()*20) + "%";
+
+        spark.style.fontSize =
+        (12 + Math.random()*12) + "px";
+
+        spark.style.pointerEvents =
+        "none";
+
+        spark.style.setProperty(
+            "--x",
+            (Math.random()*180-90)+"px"
+        );
+
+        spark.style.setProperty(
+            "--y",
+            (Math.random()*120-60)+"px"
+        );
+
+        spark.style.animation =
+        "sparkBurst 1s ease-out forwards";
+
+        bannerText.appendChild(
+            spark
+        );
+
+        setTimeout(()=>{
+            spark.remove();
+        },1000);
+
+    }
+
+},1000);
+
+
+const maguaBtn =
+document.getElementById("maguaBtn");
+
+const swiggySheet =
+document.getElementById("swiggySheet");
+
+const sheetBackdrop =
+document.getElementById("sheetBackdrop");
+
+maguaBtn.addEventListener("click",()=>{
+
+    swiggySheet.classList.add("show");
+
+    sheetBackdrop.classList.add("show");
+
+});
+
+sheetBackdrop.addEventListener("click",()=>{
+
+    swiggySheet.classList.remove("show");
+
+    sheetBackdrop.classList.remove("show");
+
+});
+
+const categoriesBtn =
+document.getElementById(
+"categoriesBtn"
+);
+
+const categorySheet =
+document.getElementById(
+"categorySheet"
+);
+
+const sheetOverlay =
+document.getElementById(
+"sheetOverlay"
+);
+
+function closeCategorySheet(){
+
+    categorySheet
+    .classList.remove("show");
+
+    sheetOverlay
+    .classList.remove("show");
+
+}
+
+categoriesBtn.addEventListener(
+"click",()=>{
+
+    categorySheet
+    .classList.add("show");
+
+    sheetOverlay
+    .classList.add("show");
+
+});
+
+sheetOverlay.addEventListener(
+"click",
+closeCategorySheet
+);
+
+/* Swipe Down Close */
+
+let startY = 0;
+
+categorySheet.addEventListener(
+"touchstart",(e)=>{
+
+    startY =
+    e.touches[0].clientY;
+
+});
+
+categorySheet.addEventListener(
+"touchend",(e)=>{
+
+    const endY =
+    e.changedTouches[0].clientY;
+
+    if(endY - startY > 80){
+
+        closeCategorySheet();
+
+    }
+
+});
+document
+.querySelectorAll(".cat-image")
+.forEach(img=>{
+
+    const shimmer =
+    img.parentElement
+    .querySelector(".cat-shimmer");
+
+    function hideShimmer(){
+
+        shimmer.style.display =
+        "none";
+
+    }
+
+    if(img.complete){
+
+        hideShimmer();
+
+    }else{
+
+        img.addEventListener(
+        "load",
+        hideShimmer
+        );
+
+        img.addEventListener(
+        "error",
+        hideShimmer
+        );
+
+    }
+
+});
+
+
+const profileBtn =
+document.getElementById(
+"profileBtn"
+);
+
+const userPanel =
+document.getElementById(
+"userPanel"
+);
+
+const userBackdrop =
+document.getElementById(
+"userBackdrop"
+);
+
+function closeUserPanel(){
+
+    userPanel
+    .classList.remove("active");
+
+    userBackdrop
+    .classList.remove("active");
+
+}
+
+profileBtn.addEventListener(
+"click",()=>{
+
+    userPanel
+    .classList.add("active");
+
+    userBackdrop
+    .classList.add("active");
+
+});
+
+userBackdrop.addEventListener(
+"click",()=>{
+
+    closeUserPanel();
+
+});
+
+
+const loginBtn =
+document.getElementById(
+"userLoginBtn"
+);
+
+const nameInput =
+document.getElementById(
+"userNameInput"
+);
+
+const mobileInput =
+document.getElementById(
+"userMobileInput"
+);
+
+const privacyCheck =
+document.getElementById(
+"privacyCheck"
+);
+
+loginBtn.addEventListener(
+"click",
+async()=>{
+
+    const name =
+    nameInput.value.trim();
+
+    const mobile =
+    mobileInput.value.trim();
+
+    if(!name){
+
+        nameInput.classList.add(
+        "shake"
+        );
+
+        setTimeout(()=>{
+            nameInput.classList.remove(
+            "shake"
+            );
+        },400);
+
+        return;
+    }
+
+    if(!/^\d{10}$/.test(mobile)){
+
+        mobileInput.classList.add(
+        "shake"
+        );
+
+        setTimeout(()=>{
+            mobileInput.classList.remove(
+            "shake"
+            );
+        },400);
+
+        return;
+    }
+
+    if(!privacyCheck.checked){
+
+        document
+        .querySelector(".privacy-row")
+        .classList.add("shake");
+
+        setTimeout(()=>{
+
+            document
+            .querySelector(".privacy-row")
+            .classList.remove("shake");
+
+        },400);
+
+        return;
+    }
+
+    const { error } =
+    await window.supabaseClient
+    .from("profiles")
+    .insert([
+        {
+            name:name,
+            mobile:mobile
+        }
+    ]);
+
+  if(error){
+
+    console.log(error);
+
+    return;
+}
+
+/* Sparkles */
+
+for(let i=0;i<40;i++){
+
+    const spark =
+    document.createElement("span");
+
+    spark.innerHTML =
+    ["✨","⭐","💫","✦"]
+    [Math.floor(Math.random()*4)];
+
+    spark.style.position =
+    "fixed";
+
+    spark.style.left =
+    Math.random()*window.innerWidth
+    + "px";
+
+    spark.style.top =
+    Math.random()*window.innerHeight
+    + "px";
+
+    spark.style.fontSize =
+    (16 + Math.random()*14)
+    + "px";
+
+    spark.style.pointerEvents =
+    "none";
+
+    spark.style.zIndex =
+    "999999";
+
+    spark.style.setProperty(
+        "--x",
+        (Math.random()*200-100)
+        + "px"
+    );
+
+    spark.style.setProperty(
+        "--y",
+        (-200-Math.random()*150)
+        + "px"
+    );
+
+    spark.style.animation =
+    "sparkBurst 1.5s ease-out forwards";
+
+    document.body.appendChild(
+        spark
+    );
+
+    setTimeout(()=>{
+        spark.remove();
+    },1500);
+
+}
+
+/* Clear + Close */
+
+setTimeout(()=>{
+    localStorage.setItem(
+        "maguaName",
+        name
+    );
+
+    localStorage.setItem(
+        "maguaMobile",
+        mobile
+    );
+
+
+    nameInput.value = "";
+
+    mobileInput.value = "";
+
+    privacyCheck.checked =
+    false;
+
+    closeUserPanel();
+
+},1500);
 
 });
