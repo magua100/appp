@@ -95,7 +95,7 @@ function showCategory(category, element){
 
 }
 
-window.addEventListener("load",()=>{
+document.addEventListener("DOMContentLoaded",()=>{
 
     showCategory(
         "sarees",
