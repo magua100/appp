@@ -2,8 +2,9 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link href="https://fonts.cdnfonts.com/css/azonix" rel="stylesheet">
 <link rel="stylesheet"
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
@@ -620,6 +621,751 @@ body{
     border-radius:20px;
     background:#fff;
 }
+.single-banner{
+    width:calc(100% - 32px);
+
+    height:150px;
+
+    margin:8px auto 0;
+
+    border-radius:24px;
+
+    overflow:hidden;
+
+    position:relative;
+}
+
+.banner-img{
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+    display:block;
+}
+
+.banner-top-text{
+    position:absolute;
+
+    top:65px;
+
+    right:40px;
+
+    color:#fff;
+
+    font-size:20px;
+
+    font-weight:700;
+
+    letter-spacing:2px;
+
+    text-shadow:
+        0 2px 8px rgba(0,0,0,.7);
+
+    z-index:20;
+}
+
+/* Animations */
+
+.fromLeft{
+    animation:fromLeft .8s ease;
+}
+
+.fromRight{
+    animation:fromRight .8s ease;
+}
+
+.fromTop{
+    animation:fromTop .8s ease;
+}
+
+.fromBottom{
+    animation:fromBottom .8s ease;
+}
+
+.fromZoom{
+    animation:fromZoom .8s ease;
+}
+
+@keyframes fromLeft{
+    from{
+        opacity:0;
+        transform:translateX(-80px);
+    }
+    to{
+        opacity:1;
+        transform:translateX(0);
+    }
+}
+
+@keyframes fromRight{
+    from{
+        opacity:0;
+        transform:translateX(80px);
+    }
+    to{
+        opacity:1;
+        transform:translateX(0);
+    }
+}
+
+@keyframes fromTop{
+    from{
+        opacity:0;
+        transform:translateY(-60px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+@keyframes fromBottom{
+    from{
+        opacity:0;
+        transform:translateY(60px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+@keyframes fromZoom{
+    from{
+        opacity:0;
+        transform:scale(.2);
+    }
+    to{
+        opacity:1;
+        transform:scale(1);
+    }
+}
+
+@keyframes sparkBurst{
+
+    0%{
+        opacity:1;
+        transform:
+        translate(0,0)
+        scale(1);
+    }
+
+    100%{
+        opacity:0;
+        transform:
+        translate(var(--x),var(--y))
+        scale(.2);
+    }
+}
+
+.sheet-backdrop{
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.4);
+
+    opacity:0;
+
+    visibility:hidden;
+
+    transition:.3s;
+
+    z-index:9998;
+}
+
+.sheet-backdrop.show{
+
+    opacity:1;
+
+    visibility:visible;
+}
+
+.swiggy-sheet{
+
+    position:fixed;
+
+    left:0;
+    right:0;
+    bottom:0;
+
+    height:220px;
+
+    background:#5e3984;
+
+    border-radius:28px 28px 0 0;
+
+    transform:translateY(100%);
+
+    transition:.35s ease;
+
+    z-index:9999;
+}
+.swiggy-sheet.show{
+
+    transform:
+    translateY(0);
+}
+
+.sheet-bar{
+
+    width:50px;
+
+    height:5px;
+
+    background:#d0d0d0;
+
+    border-radius:20px;
+
+    margin:12px auto;
+}
+
+.sheet-content{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+    padding:20px;
+}
+
+.sheet-image{
+
+    width:70px;
+
+    height:70px;
+
+    border-radius:16px;
+
+    object-fit:cover;
+}
+
+.sheet-text{
+
+    font-size:20px;
+
+    font-weight:700;
+
+    color:#fff;
+}
+.sheet-divider{
+
+    width:calc(100% - 40px);
+
+    height:1px;
+
+    margin:18px auto;
+
+    background:
+    linear-gradient(
+        to right,
+        transparent,
+        rgba(255,255,255,.6),
+        transparent
+    );
+}
+.sheet-subtext{
+
+    margin-top:4px;
+
+    color:rgba(255,255,255,.75);
+
+    font-size:13px;
+
+    font-weight:400;
+
+    letter-spacing:.5px;
+}
+.sheet-overlay{
+
+    position:fixed;
+
+    inset:0;
+
+    background:
+    rgba(0,0,0,.45);
+
+    opacity:0;
+
+    visibility:hidden;
+
+    transition:.3s;
+
+    z-index:99998;
+}
+
+.sheet-overlay.show{
+
+    opacity:1;
+
+    visibility:visible;
+}
+
+.category-sheet{
+
+    position:fixed;
+
+    left:0;
+    right:0;
+    bottom:0;
+
+    height:85vh;
+
+    background:#5e3984;
+
+    border-radius:28px 28px 0 0;
+
+    transform:
+    translateY(100%);
+
+    transition:.35s ease;
+
+    z-index:99999;
+
+    overflow-y:auto;
+}
+
+.category-sheet.show{
+
+    transform:
+    translateY(0);
+}
+
+.sheet-bar{
+
+    width:50px;
+
+    height:5px;
+
+    background:
+    rgba(255,255,255,.5);
+
+    border-radius:20px;
+
+    margin:12px auto;
+}
+
+.category-title{
+
+    color:#fff;
+
+    font-size:22px;
+
+    font-weight:700;
+
+    text-align:center;
+
+    margin:18px 0;
+}
+
+.category-grid{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(3,1fr);
+
+    gap:18px;
+
+    padding:0 16px 40px;
+}
+
+.cat-card{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    gap:8px;
+}
+
+.cat-card img{
+
+    width:80px;
+
+    height:80px;
+
+    object-fit:cover;
+
+    border-radius:18px;
+}
+
+.cat-card span{
+
+    color:#fff;
+
+    font-size:12px;
+
+    text-align:center;
+}
+.cat-image-wrap{
+
+    position:relative;
+
+    width:80px;
+
+    height:80px;
+
+    border-radius:18px;
+
+    overflow:hidden;
+}
+
+.cat-image{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+    display:block;
+
+    position:relative;
+
+    z-index:2;
+}
+
+.cat-shimmer{
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+    linear-gradient(
+        90deg,
+        rgba(255,255,255,.08) 0%,
+        rgba(255,255,255,.28) 50%,
+        rgba(255,255,255,.08) 100%
+    );
+
+    background-size:200% 100%;
+
+    animation:
+    shimmerMove 1.2s infinite;
+
+    z-index:1;
+}
+
+@keyframes shimmerMove{
+
+    0%{
+        background-position:
+        -200% 0;
+    }
+
+    100%{
+        background-position:
+        200% 0;
+    }
+}
+.user-backdrop{
+
+    position:fixed;
+
+    inset:0;
+
+    background:
+    rgba(0,0,0,.45);
+
+    opacity:0;
+
+    visibility:hidden;
+
+    transition:.3s;
+
+    z-index:99990;
+}
+
+.user-backdrop.active{
+
+    opacity:1;
+
+    visibility:visible;
+}
+
+.user-panel{
+
+       position:fixed;
+
+    left:0;
+    right:0;
+    bottom:0;
+
+    height:auto;
+
+    min-height:360px;
+
+    background:#5e3984;
+
+    border-radius:28px 28px 0 0;
+
+    transform:
+    translateY(100%);
+
+    transition:.35s ease;
+
+    z-index:99991;
+}
+
+.user-panel.active{
+
+    transform:
+    translateY(0);
+}
+
+.user-handle{
+
+    width:50px;
+
+    height:5px;
+
+    margin:12px auto;
+
+    border-radius:20px;
+
+    background:
+    rgba(255,255,255,.5);
+}
+
+.user-header{
+
+    text-align:center;
+
+    padding:20px;
+}
+
+.user-brand-logo{
+
+    width:90px;
+
+    height:90px;
+
+    border-radius:20px;
+
+    object-fit:cover;
+}
+
+.user-brand-title{
+
+    color:#fff;
+
+    font-size:20px;
+
+    font-family:'Azonix',sans-serif;
+
+    letter-spacing:3px;
+
+    margin-top:14px;
+
+    text-transform:uppercase;
+
+    line-height:1.5;
+
+    text-align:center;
+}
+
+.user-brand-subtitle{
+
+    color:
+    rgba(255,255,255,.75);
+
+    margin-top:6px;
+}
+
+.user-form-area{
+
+    padding:20px;
+}
+
+.user-input{
+
+    width:100%;
+
+    height:50px;
+
+    background:transparent;
+
+    border:none;
+
+    border-bottom:
+    1px solid rgba(255,255,255,.35);
+
+    color:#fff;
+
+    font-size:16px;
+
+    padding:0;
+
+    margin-bottom:20px;
+
+    outline:none;
+}
+
+.user-input::placeholder{
+
+    color:
+    rgba(255,255,255,.55);
+}
+.user-mobile-wrap{
+
+    display:flex;
+
+    align-items:center;
+
+    border-bottom:
+    1px solid rgba(255,255,255,.35);
+
+    margin-bottom:24px;
+
+    padding-bottom:6px;
+
+    background:transparent;
+}
+
+.user-code{
+
+    color:#fff;
+
+    font-weight:600;
+
+    margin-right:10px;
+}
+
+.user-mobile-input{
+
+    flex:1;
+
+    background:transparent;
+
+    border:none;
+
+    color:#fff;
+
+    font-size:16px;
+
+    outline:none;
+}
+
+.user-mobile-input::placeholder{
+
+    color:
+    rgba(255,255,255,.55);
+}
+
+.user-login-btn{
+
+    width:100%;
+
+    height:52px;
+
+    border:none;
+
+    border-radius:30px;
+
+    background:#fff;
+
+    color:#5e3984;
+
+    font-size:16px;
+
+    font-weight:700;
+
+    margin-top:10px;
+}
+.privacy-row{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    margin:20px 0;
+
+    padding:12px 14px;
+
+    background:
+    rgba(255,255,255,.08);
+
+    border:
+    1px solid rgba(255,255,255,.12);
+
+    border-radius:14px;
+
+    backdrop-filter:blur(10px);
+}
+
+.privacy-row input{
+
+    width:18px;
+
+    height:18px;
+
+    accent-color:#ffffff;
+
+    flex-shrink:0;
+}
+
+.privacy-row span{
+
+    color:
+    rgba(255,255,255,.9);
+
+    font-size:12px;
+
+    line-height:1.5;
+}
+
+.privacy-row a{
+
+    color:#ffffff;
+
+    font-weight:700;
+
+    text-decoration:none;
+}
+
+.privacy-row a:hover{
+
+    text-decoration:underline;
+}
+@keyframes shake{
+
+    0%{
+        transform:translateX(0);
+    }
+
+    25%{
+        transform:translateX(-6px);
+    }
+
+    50%{
+        transform:translateX(6px);
+    }
+
+    75%{
+        transform:translateX(-6px);
+    }
+
+    100%{
+        transform:translateX(0);
+    }
+}
+
+.shake{
+
+    animation:
+    shake .35s ease;
+}
 </style>
 </head>
 <body>
@@ -632,8 +1378,10 @@ body{
     src="logos/magualogo.webp"
     class="nav-logo">
 
-    <i class="fas fa-user-circle nav-profile"></i>
-
+<i
+class="fas fa-user-circle nav-profile"
+id="profileBtn">
+</i>
 </div>
 
 <div class="search-wrapper">
@@ -887,7 +1635,26 @@ body{
 
 
 
+<div id="makeupContent" class="category-content">
 
+
+
+
+<div class="single-banner">
+
+    <img src="makeup/8.jpg" class="banner-img">
+
+   <div id="bannerChangingText" class="banner-top-text">
+    MAKEUP
+</div>
+
+</div>
+
+
+
+
+
+</div>
 
 
 
@@ -902,19 +1669,17 @@ body{
 <!--bottom dev-->
 
 <div class="bottom-nav">
-
-   <div class="bottom-item">
+<div class="bottom-item" id="maguaBtn">
 
     <img
-        src="logos/magualogo.webp"
-        class="magua-icon"
-    >
+    src="logos/magualogo.webp"
+    class="magua-icon">
 
     <span>Magua</span>
 
 </div>
 
-    <div class="bottom-item">
+<div class="bottom-item" id="categoriesBtn">
 
         <img src="icons/cat.png">
 
@@ -939,6 +1704,251 @@ body{
     </div>
 
 </div>
+<div class="sheet-backdrop"
+id="sheetBackdrop"></div>
+
+<div class="swiggy-sheet"
+id="swiggySheet">
+
+    <div class="sheet-bar"></div>
+
+    <div class="sheet-content">
+
+    <img
+    src="logos/magualogo.webp"
+    class="sheet-image">
+
+    <div>
+
+        <div class="sheet-text">
+            Magua Ethnics
+        </div>
+
+        <div class="sheet-subtext">
+            Designer Fashion Collection
+        </div>
+
+    </div>
+
+</div>
+
+<div class="sheet-divider"></div>
+
+</div>
+
+
+
+
+<div class="sheet-overlay"
+id="sheetOverlay"></div>
+
+<div class="category-sheet"
+id="categorySheet">
+
+    <div class="sheet-bar"></div>
+
+    <div class="category-title">
+        Categories
+    </div>
+
+    <div class="category-grid">
+
+        <div class="cat-card">
+
+    <div class="cat-image-wrap">
+
+        <div class="cat-shimmer"></div>
+
+        <img
+        src="sares.webp"
+        class="cat-image">
+
+    </div>
+
+    <span>Sarees</span>
+
+</div>
+
+<div class="cat-card">
+
+    <div class="cat-image-wrap">
+
+        <div class="cat-shimmer"></div>
+
+        <img
+        src="jewelry.png"
+        class="cat-image">
+
+    </div>
+
+    <span>Jewellery</span>
+
+</div>
+
+<div class="cat-card">
+
+    <div class="cat-image-wrap">
+
+        <div class="cat-shimmer"></div>
+
+        <img
+        src="makeup.png"
+        class="cat-image">
+
+    </div>
+
+    <span>Makeup</span>
+
+</div>
+
+<div class="cat-card">
+
+    <div class="cat-image-wrap">
+
+        <div class="cat-shimmer"></div>
+
+        <img
+        src="lehangas.png"
+        class="cat-image">
+
+    </div>
+
+    <span>Lehengas</span>
+
+</div>
+
+<div class="cat-card">
+
+    <div class="cat-image-wrap">
+
+        <div class="cat-shimmer"></div>
+
+        <img
+        src="wedding.png"
+        class="cat-image">
+
+    </div>
+
+    <span>Materials</span>
+
+</div>
+
+<div class="cat-card">
+
+    <div class="cat-image-wrap">
+
+        <div class="cat-shimmer"></div>
+
+        <img
+        src="wedding-dress.png"
+        class="cat-image">
+
+    </div>
+
+    <span>Dresses</span>
+
+</div>
+
+<div class="cat-card">
+
+    <div class="cat-image-wrap">
+
+        <div class="cat-shimmer"></div>
+
+        <img
+        src="wedding-dress.png"
+        class="cat-image">
+
+    </div>
+
+    <span>Earings</span>
+
+</div>
+
+
+    </div>
+
+</div>
+<div class="user-panel"
+id="userPanel">
+
+    <div class="user-handle"></div>
+
+    <div class="user-header">
+
+        <img
+        src="logos/magualogo.webp"
+        class="user-brand-logo">
+
+       <div class="user-brand-title">
+    MAGUA<br>
+    ETHNICS
+</div>
+
+        <div class="user-brand-subtitle">
+            Login
+        </div>
+
+    </div>
+
+    <div class="user-form-area">
+
+        <input
+        type="text"
+        id="userNameInput"
+        class="user-input"
+        placeholder="Enter Your Name">
+
+        <div class="user-mobile-wrap">
+
+            <span class="user-code">
+                +91
+            </span>
+
+            <input
+            type="tel"
+            id="userMobileInput"
+            class="user-mobile-input"
+            placeholder="9876543210">
+
+        </div>
+<label class="privacy-row">
+
+    <input
+    type="checkbox"
+    id="privacyCheck">
+
+    <span>
+
+        I accept the
+        <a href="#">
+            Privacy Policy
+        </a>
+        and
+        <a href="#">
+            Terms & Conditions
+        </a>
+
+    </span>
+
+</label>
+        <button
+class="user-login-btn"
+id="userLoginBtn">
+
+    Login
+
+</button>
+
+    </div>
+
+</div>
+
+<div
+class="user-backdrop"
+id="userBackdrop">
+</div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script src="script.js"></script>
 
