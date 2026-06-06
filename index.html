@@ -75,7 +75,7 @@ body{
 
 .search-box{
 
-    height:58px;
+    height:55px;
 
     display:flex;
 
@@ -249,18 +249,15 @@ body{
 
     position:fixed;
 
-    bottom:12px;
-
     left:12px;
-
     right:12px;
+    bottom:12px;
 
     height:72px;
 
     display:flex;
 
     justify-content:space-around;
-
     align-items:center;
 
     background:rgba(255,255,255,.08);
@@ -272,7 +269,14 @@ body{
 
     border-radius:20px;
 
-    z-index:9999;
+    z-index:999999;
+
+    transform:translateZ(0);
+    -webkit-transform:translateZ(0);
+
+    will-change:transform;
+
+    pointer-events:auto;
 }
 
 .bottom-item{
