@@ -712,22 +712,31 @@ async()=>{
         return;
     }
 
-    const { error } =
-    await window.supabaseClient
-    .from("profiles")
-    .insert([
-        {
-            name:name,
-            mobile:mobile
-        }
-    ]);
+    /* Instant Sparkles First */
 
-  if(error){
+for(let i=0;i<40;i++){
 
-    console.log(error);
+    // your sparkle code here
 
-    return;
 }
+
+/* Save In Background */
+
+window.supabaseClient
+.from("profiles")
+.insert([
+    {
+        name:name,
+        mobile:mobile
+    }
+])
+.then(({error})=>{
+
+    if(error){
+        console.log(error);
+    }
+
+});
 
 /* Sparkles */
 
@@ -787,8 +796,8 @@ for(let i=0;i<40;i++){
 }
 
 /* Clear + Close */
-
 setTimeout(()=>{
+
     localStorage.setItem(
         "maguaName",
         name
@@ -798,7 +807,6 @@ setTimeout(()=>{
         "maguaMobile",
         mobile
     );
-
 
     nameInput.value = "";
 
