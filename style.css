@@ -1574,3 +1574,100 @@ visibility:visible;
     text-transform:uppercase;
     margin:16px 0 12px;
 }
+
+.product-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:10px;
+
+    padding:0 16px;
+
+    margin-top:14px;
+}
+
+.product-card{
+
+    text-align:center;
+}
+
+.product-card img{
+
+    width:100%;
+
+    height:90px;
+
+    object-fit:cover;
+
+    object-position:center 20%;
+
+    border-radius:14px;
+
+    display:block;
+}
+
+.product-card p{
+
+    color:#fff;
+
+    font-family:'Azonix',sans-serif;
+
+    font-size:9px;
+
+    letter-spacing:1px;
+
+    margin-top:6px;
+
+    text-align:center;
+
+    text-transform:uppercase;
+}
+.product-img-wrap{
+
+    position:relative;
+
+    border-radius:16px;
+
+    overflow:hidden;
+}
+
+.product-shimmer{
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+    linear-gradient(
+        90deg,
+        #dcdcdc 20%,
+        #ffffff 50%,
+        #dcdcdc 80%
+    );
+
+    background-size:200% 100%;
+
+    animation:productShimmer 1s linear infinite;
+
+    z-index:1;
+}
+
+@keyframes productShimmer{
+
+    0%{
+        background-position:-200% 0;
+    }
+
+    100%{
+        background-position:200% 0;
+    }
+}
+
+.product-img{
+
+    position:relative;
+
+    z-index:2;
+}
