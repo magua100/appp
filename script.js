@@ -1154,3 +1154,39 @@ flipObserver.observe(
 document.getElementById(
 "flipGallery"
 ));
+
+
+document
+.querySelectorAll(".product-img")
+.forEach(img=>{
+
+    const shimmer =
+    img.parentElement
+    .querySelector(".product-shimmer");
+
+    function hideShimmer(){
+
+        shimmer.style.display =
+        "none";
+
+    }
+
+    if(img.complete){
+
+        hideShimmer();
+
+    }else{
+
+        img.addEventListener(
+        "load",
+        hideShimmer
+        );
+
+        img.addEventListener(
+        "error",
+        hideShimmer
+        );
+
+    }
+
+});
